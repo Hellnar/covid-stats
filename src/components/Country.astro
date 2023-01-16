@@ -1,0 +1,40 @@
+---
+export interface Props {
+    img: string,
+    country: string,
+    confirmed: string
+}
+
+const { img, country, confirmed} = Astro.props as Props
+---
+
+<div class="country">
+    <img src={img}>
+    <p class="country-name">{country}</p>
+    <p>{confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>
+</div>
+
+<style>
+    .country {
+        border: 1px solid #cbd5e1;
+        border-radius: 7px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .country:hover {
+        border: 1px solid #7c3aed;
+        cursor: pointer;
+    }
+
+    .country-name {
+        font-size: 16px;
+        margin: 0;
+        height: 38px;
+        text-align: center;
+        font-weight: 700;
+    }
+
+</style>
